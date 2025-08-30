@@ -1,15 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyecto.estructuras;
 
 public class Lista<T> {
-    private Nodo<T> cabeza;
+    public Nodo<T> cabeza;
 
-    private static class Nodo<T> {
-        T dato;
-        Nodo<T> siguiente;
+    public static class Nodo<T> {
+        public T dato;
+        public Nodo<T> siguiente;
 
         public Nodo(T dato) {
             this.dato = dato;
@@ -19,6 +15,10 @@ public class Lista<T> {
 
     public Lista() {
         cabeza = null;
+    }
+
+    public Nodo<T> getCabeza() {
+        return cabeza;
     }
 
     // INSERTAR al final
@@ -71,10 +71,21 @@ public class Lista<T> {
     // MOSTRAR lista completa
     public void mostrar() {
         Nodo<T> actual = cabeza;
-        System.out.println("Contenido de la lista:");
         while (actual != null) {
             System.out.println("- " + actual.dato);
             actual = actual.siguiente;
+        }
+    }
+
+    // Nuevo método para mostrar contenido sin el encabezado
+    public void mostrarContenido() {
+        Nodo<T> actual = cabeza;
+        while (actual != null) {
+            System.out.println("- " + actual.dato);
+            actual = actual.siguiente;
+        }
+        if (cabeza == null) {
+            System.out.println("(Vacío)");
         }
     }
 }

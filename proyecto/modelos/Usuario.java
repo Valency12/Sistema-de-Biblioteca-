@@ -1,4 +1,3 @@
-
 package proyecto.modelos;
 
 public class Usuario {
