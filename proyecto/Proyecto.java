@@ -2,16 +2,37 @@ package proyecto;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que actúa como punto de entrada y controlador del sistema de biblioteca.
+ * Implementa la interfaz de usuario en consola y coordina las operaciones del sistema.
+ * Sigue el patrón MVC (Modelo-Vista-Controlador) donde:
+ * - Modelo: {@link Biblioteca}
+ * - Vista: Interfaz de consola
+ * - Controlador: Esta clase
+ */
 public class Proyecto {
 
     private Biblioteca biblioteca;
     private Scanner scanner;
 
-    public Proyecto () {
+    /**
+     * Constructor que inicializa el sistema de biblioteca.
+     * Crea una nueva instancia de {@link Biblioteca} y prepara el scanner para entrada de usuario.
+     * El sistema se inicia con datos predeterminados definidos en el constructor de Biblioteca.
+     */
+    public Proyecto() {
         this.biblioteca = new Biblioteca();
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Muestra el menú principal del sistema y gestiona la interacción con el usuario.
+     * Presenta un menú interactivo con 7 opciones y procesa la selección del usuario
+     * en un bucle hasta que se elige la opción de salir (0).
+     * 
+     * El método utiliza un patrón do-while para garantizar que el menú se muestre
+     * al menos una vez y continúe mostrándose hasta que el usuario decida salir.
+     */
     public void mostrarMenu() {
         int opcion;
         do {
@@ -60,6 +81,10 @@ public class Proyecto {
         } while (opcion != 0);
     }
 
+    /**
+     * Maneja la interacción para agregar un nuevo libro al catálogo.
+     * Solicita al usuario el título, autor y categoría del libro, luego delega
+     */
     private void agregarLibro() {
         System.out.print("Ingrese el título del libro: ");
         String titulo = scanner.nextLine();
@@ -71,6 +96,11 @@ public class Proyecto {
         biblioteca.agregarLibro(titulo, autor, categoria);
     }
 
+    /**
+     * Maneja la interacción para registrar una nueva solicitud de préstamo.
+     * Solicita al usuario el nombre del solicitante y el título del libro,
+     * luego delega la operación a la clase {@link Biblioteca}.
+     */
     private void registrarPrestamo() {
         System.out.print("Ingrese el nombre del usuario: ");
         String nombre = scanner.nextLine();
@@ -80,6 +110,11 @@ public class Proyecto {
         biblioteca.registrarPrestamo(nombre, libro);
     }
 
+    /**
+     * Maneja la interacción para registrar una devolución urgente.
+     * Solicita al usuario el título del libro devuelto y delega
+     * la operación a la clase {@link Biblioteca}.
+     */
     private void registrarDevolucionUrgente() {
         System.out.print("Ingrese el título del libro devuelto: ");
         String libro = scanner.nextLine();
@@ -87,7 +122,10 @@ public class Proyecto {
         biblioteca.registrarDevolucion(libro);
     }
     
-     // Método main para ejecutar el sistema
+    /**
+     * Punto de entrada principal del sistema de biblioteca.
+     * Crea una instancia de la aplicación y inicia el menú principal.
+     */
     public static void main(String[] args) {
         Proyecto app = new Proyecto();
         app.mostrarMenu();
