@@ -1,5 +1,3 @@
-# Sistema de Biblioteca
-
 # 📚 Proyecto: Sistema de Biblioteca en Java
 
 Este proyecto es una simulación de un **sistema de gestión de biblioteca** desarrollado en **Java**.  
